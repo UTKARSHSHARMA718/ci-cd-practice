@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+WORKDIR /usr/app
+
+COPY ./package.json ./
+
+RUN npm install
+
+COPY ./ ./
+
+# Build the app
+RUN npm run build
+
+EXPOSE 5173
+
+# default container command
+CMD ["npm", "run", "dev"]
